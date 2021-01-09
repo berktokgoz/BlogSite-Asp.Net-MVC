@@ -1,0 +1,65 @@
+﻿
+
+@model BerkTokgozBlogSitesi.Models.ViewModel.MakaleYaz
+
+@{    
+    ViewBag.Title = "MakaleYaz";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var asas = ViewBag.Kategoriler as List<BerkTokgozBlogSitesi.Models.Kategori>;
+   
+}
+
+
+    <h2>Yeni Makale Oluştur</h2>
+
+@using (Html.BeginForm("MakaleYaz", "Yonetici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <table>
+            <tr>
+                <td>Başlık</td>
+                <td>
+                    <input class="form-control" type="text" name="Baslik" value="" placeholder="Başlık Giriniz" />
+                    @Html.ValidationMessageFor(m => m.Baslik)
+                </td>
+            </tr>
+            <tr>
+                <td>Kategori</td>
+                <td>
+                    <select class="form-control" name="KatID">
+                        @foreach (var kategori in ViewBag.Kategoriler)
+                        {
+                            <option value="@kategori.ID">
+                                @kategori.Adi
+                            </option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Etiketler</td>
+                <td><input class="form-control" type="text" name="Etiketler" value="" /></td>
+            </tr>
+            <tr>
+                <td>Resim Seç</td>
+                <td>
+                    <input class="form-control" type="file" name="Resim" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>İçerik</td>
+                <td>
+                    <textarea class="form-control" name="Icerik" placeholder="Makale içeriğini giriniz. Alanı büyütmek için sağ alt köşeden tutup çekiniz." cols="20" rows="10"></textarea>
+                    @Html.ValidationMessageFor(m => m.Icerik)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="form-control" type="submit" name="btnEkle" value="Kaydet" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+

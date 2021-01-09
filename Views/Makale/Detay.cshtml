@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    BerkTokgozBlogSitesi.Models.Kullanici k = new BerkTokgozBlogSitesi.Models.Kullanici();
+    var user = Session["UserInfo"] as BerkTokgozBlogSitesi.Models.ViewModel.UserInfo;
+
+}
+
+@model BerkTokgozBlogSitesi.Models.MakaleDetay
+ 
+
+<article class="blog-post">
+    <header>
+        <h2>
+            <a href="/Makale/Detay/@Model.ID">@Model.Baslik</a>
+        </h2>
+        <ul class="info">
+            <li> Kategori: @Model.KategoriAdi </li>
+            <li> Yorumlar: @Model.YorumSayisi </li>
+            <li> Tarih: @Model.Tarih </li>
+            
+        </ul>
+    </header>
+    <div class="text-editor">
+      
+
+        @Model.İcerik
+
+    </div>
+</article>
+<a id="Yorum"/>
+<div class="comments">
+    <h3>
+        @Model.YorumSayisi Yorum
+    </h3>
+    <ul>
+        @foreach (var yorum in Model.Yorumlar)
+        {
+        <li class="comment">
+            <div class="user">
+               
+                <div class="name text-center">
+                    <a href="#">@yorum.Kullanici.Adi @yorum.Kullanici.Soyadi</a>
+
+                </div>
+            </div>
+            <div class="comment-box">
+               
+                <div class="text">
+                    @yorum.İcerik
+                </div>
+                @if(user.IsAdmin || user.Yazar)
+                    { 
+
+                    <a href="/Yonetici/YorumSil/@yorum.ID">Yorumu Sil</a>
+
+                    }
+                
+                
+            </div>
+        </li>
+        }
+    </ul>
+</div>
+
+
+
+@using (Html.BeginForm("Detay", "Makale", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    <div class="write-comment">
+    <h4>Yorum Yaz</h4>
+    <br />
+    <h6>Yorumlarınızın sistemde kayıt olması için üye olmanız gerekmektedir.</h6>
+    <div class="textarea-wrap">
+        @Html.HiddenFor(p=> p.ID)
+        @Html.TextAreaFor(x=> x.YorumIcerik)
+        <button type="submit"> Kaydet </button>
+    </div>
+    <hr>
+</div>
+}

@@ -1,0 +1,15 @@
+﻿@{ Layout = null; }
+
+@model List<BerkTokgozBlogSitesi.Models.Etiket>
+
+<div class="widget blog-tags">
+    <h5>Etiketler</h5>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/Etiket/Index/@item.ID" class="btn btn-default">@item.Adi (@item.Makale.Count)</a></li>
+        }
+
+
+    </ul>
+</div>

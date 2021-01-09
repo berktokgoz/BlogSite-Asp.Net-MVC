@@ -1,0 +1,29 @@
+﻿@model BerkTokgozBlogSitesi.Models.ViewModel.KategoriSil
+
+@{
+    ViewBag.Title = "KategoriSil";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var kategoriler = ViewBag.Kategoriler as List<SelectListItem>;
+}
+
+<h2>KategoriSil</h2>
+
+<div>
+    @using (Html.BeginForm("KategoriSil", "Yonetici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table>
+            <tr>
+                <td>Kategori seç:</td>
+                <td>
+                    @Html.DropDownListFor(p => p.KategoriId, kategoriler, new { @class = "form-control" })
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Kaydet" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>

@@ -1,0 +1,29 @@
+﻿@model BerkTokgozBlogSitesi.Models.ViewModel.UyeSil
+
+@{
+    ViewBag.Title = "UyeSil";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var uyeler = ViewBag.Uyeler as List<SelectListItem>;
+}
+
+<h2>Üye Sil</h2>
+
+<div>
+    @using (Html.BeginForm("UyeSil", "Yonetici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table>
+            <tr>
+                <td>Üye seç:</td>
+                <td>
+                    @Html.DropDownListFor(p => p.ID, uyeler, new { @class = "form-control" })
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Sil" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>

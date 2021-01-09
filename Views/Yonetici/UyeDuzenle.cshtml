@@ -1,0 +1,32 @@
+﻿@model BerkTokgozBlogSitesi.Models.ViewModel.UyeDuzenle
+
+@{
+    ViewBag.Title = "UyeDuzenle";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var uyeler = ViewBag.Uyeler as List<SelectListItem>;
+}
+
+<h2>Üye Adı Düzenle</h2>
+<div>
+    @using (Html.BeginForm("UyeDuzenle", "Yonetici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table>
+            <tr>
+                <td>Üye Seç:</td>
+                <td>
+                    @Html.DropDownListFor(p => p.ID, uyeler, new { @class = "form-control" })
+
+                </td>
+            </tr>
+            <tr>
+                <td>Üye adı (nick) değiştir:</td>
+                <td>@Html.TextBoxFor(p => p.Adi, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Kaydet" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>

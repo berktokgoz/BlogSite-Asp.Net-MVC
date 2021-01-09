@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var user = Session["UserInfo"] as BerkTokgozBlogSitesi.Models.ViewModel.UserInfo;
+}
+
+ 
+   
+         
+            <h2>Hakkımızda</h2>
+            <h3>Başlık:</h3>
+            <input type="text" class="form-control" id="txtBaşlık" />
+            <h3>İçerik:</h3>
+            <input type="text" class="form-control" id="txtİçerik" />
+            <input type="button" value="Kaydet" onclick="Kaydet()" />
+
+            <script>
+
+    function Kaydet() {
+
+        var başlık = $("#txtBaşlık").val();
+        var içerik = $("#txtİçerik").val();
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "http://localhost:51462/api/Hakkımızda/Düzenle",
+            data: { Başlık: başlık, Icerik: içerik },
+            success: function (result) {
+                if (result != null && result.Data)
+                    alert("Başarılı.");
+                else
+                    alert("Hata");
+            }
+
+
+        });
+
+    }
+
+            </script>
+         
+
+

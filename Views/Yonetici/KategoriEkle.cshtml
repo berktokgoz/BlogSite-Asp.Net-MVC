@@ -1,0 +1,34 @@
+﻿@model BerkTokgozBlogSitesi.Models.ViewModel.KategoriEkle
+@{
+    ViewBag.Title = "KategoriDuzenle";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+   
+}
+
+@using (Html.BeginForm("KategoriEkle", "Yonetici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+   
+ <div>
+            <table>
+                <tr>
+                    <td>Kategori Ekle</td>
+                    <td>
+                        <input class="form-control" type="text" name="Adi" value="" placeholder="Kategori Adı Giriniz" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input class="form-control" type="submit" name="btnEkle" value="Kaydet" />
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        
+
+    }
+
+ }
+
+ 

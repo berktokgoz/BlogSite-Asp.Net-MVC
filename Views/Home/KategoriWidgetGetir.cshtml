@@ -1,0 +1,17 @@
+﻿
+@{ Layout = null; }
+@model List<BerkTokgozBlogSitesi.Models.Kategori>
+
+
+<div class="widget categories">
+    <h5>Kategoriler</h5>
+    <ul>
+        @foreach (var kat in Model)
+        {
+            <li><a href="/Home/Anasayfa/@kat.ID">@kat.Adi</a></li>
+        }
+        
+        
+    </ul>
+</div>
+

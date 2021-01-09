@@ -1,0 +1,20 @@
+﻿
+@model BerkTokgozBlogSitesi.Models.UyeRol
+
+@{
+    ViewBag.Title = "UyeRol";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var uyeler = ViewBag.Uyeler as List<SelectListItem>;
+    var roller = ViewBag.Roller as List<SelectListItem>;
+}
+
+<h2>UyeRol</h2>
+
+@using (Html.BeginForm("UyeRol", "Yonetici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.DropDownListFor(p => p.UyeId, uyeler, new { @class = "form-control" })
+
+@Html.DropDownListFor(p => p.RolId, roller, new { @class = "form-control" })
+
+    <button type="submit" class="Gönder">Kaydet</button>
+}

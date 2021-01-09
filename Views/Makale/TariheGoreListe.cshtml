@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "TariheGoreListe";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@{ 
+    Html.RenderAction("MakaleListele", new { yil = ViewBag.yil, ay=ViewBag.ay});
+}

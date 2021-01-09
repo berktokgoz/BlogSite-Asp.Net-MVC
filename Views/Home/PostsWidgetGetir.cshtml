@@ -1,0 +1,26 @@
+﻿@{ Layout = null; }
+<div class="widget posts">
+    <h5>En Yeniler</h5>
+    <div class="widget-tabs">
+        
+        
+            <div class="tab-pane" id="fresh">
+                <ul>
+                    @foreach (var son in ViewBag.SonEklenenler)
+                    {
+
+
+                        <li>
+                        
+                            <div class="text">
+                                <a href="/Makale/Detay/@son.ID">@son.Baslik</a>
+                                <a href="/Kategori/Index/@son.KategoriID" class="category">{ @son.Kategori.Adi }</a>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Yazar";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@{
+    Html.RenderAction("MakaleListele","Makale", new { ID = Model });
+}
+

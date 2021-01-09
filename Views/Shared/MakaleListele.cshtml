@@ -1,0 +1,55 @@
+﻿@{ Layout = null;}
+@model List<BerkTokgozBlogSitesi.Models.Makale>
+
+
+@helper Kisalt(string metin)
+{
+if (metin.Length > 300)
+{
+    <p>@metin.Substring(0, 300);</p>
+}
+else
+{
+    <p>@metin;</p>
+}
+}
+
+@foreach (var makale in Model)
+
+{
+
+    <article class="blog-post">
+        <header>
+            <h2>
+                <a href="/Makale/Detay/@makale.ID">
+                    @makale.Baslik
+                </a>
+            </h2>
+
+            <ul class="info">
+                <li><a href="/Kategori/Index/@makale.KategoriID">{ @makale.Kategori.Adi } </a></li>
+                <li><a href="/Makale/TariheGoreListe?yil=@makale.Tarih.Year & ay=@makale.Tarih.Month">{@makale.Tarih.ToString("MM YYYY")}</a></li>
+                <li>{ Yorumlar: <a href="#"> @makale.Yorum.Count </a> }</li>
+                <li>{Görüntülenme: @makale.Goruntulenme}</li>
+                <li>{Beğeni: @makale.Begeni}</li>
+            </ul>
+        </header>
+        <div class="content">
+            <figure>
+                <a href="/Makale/Detay/@makale.ID">
+                    < img src="@makale.Resimler.OrtaResimYol" alt=""/>
+                </a>
+            </figure>
+            <div class="text">
+                @{
+                    Kisalt(makale.İcerik);
+                }
+            </div>
+            <a href="/Makale/Detay/@makale.ID" class="btn btn-default">Devamını Oku...</a>
+        </div>
+    </article>
+
+                    }
+
+
+

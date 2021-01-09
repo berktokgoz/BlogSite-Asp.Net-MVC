@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "ProfilAyarlari";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@{var user = Session["UserInfo"] as BerkTokgozBlogSitesi.Models.ViewModel.UserInfo; }
+@if (user.IsAdmin || user.Yazar || user.Uye)
+
+{
+
+    <h2>ProfilAyarlari</h2>
+    <tr>
+        <td>Resim Seç</td>
+        <td>
+            <input class="form-control" type="file" name="Resim" value="" />
+        </td>
+    </tr>
+
+}
+
+

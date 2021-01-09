@@ -1,0 +1,44 @@
+﻿@model BerkTokgozBlogSitesi.Models.ViewModel.KayitOlViewModel
+@{
+    ViewBag.Title = "KayitOl";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+   
+}
+
+<h2>KayitOl</h2>
+@using (Html.BeginForm("KayitOl", "Kullanici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+   
+
+<table>
+
+
+   
+   
+    <tr>
+        <td>Kullanıcı Adı (Nickname)</td>
+        <td>@Html.TextBoxFor(m => m.Nick, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>Parola</td>
+        <td> @Html.PasswordFor(m => m.Sifre, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>Adı</td>
+        <td>@Html.TextBoxFor(m => m.Adi, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>Soyadı</td>
+        <td>@Html.TextBoxFor(m => m.Soyadi, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>E-Mail Adresi</td>
+        <td>@Html.TextBoxFor(m => m.Mail, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input class="form-control" type="submit" name="btnKayitOl" value="Kayıt Ol"/></td>
+    </tr>
+</table>
+}

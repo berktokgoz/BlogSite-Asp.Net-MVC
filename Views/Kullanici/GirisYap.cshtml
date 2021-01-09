@@ -1,0 +1,71 @@
+﻿@model BerkTokgozBlogSitesi.Models.ViewModel.LoginViewModel
+@{
+    ViewBag.Title = "GirisYap";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var msg = ViewData["Message"] as string;
+}
+
+<body class="login">
+
+    <div class="loginbox radius3">
+        <div class="loginboxinner radius3">
+
+            <div style="text-align:center">
+                <div class="loginform" style="margin:0 auto; width:20%">
+                    <div style="margin:0 auto">
+                        <h1 class="bebas">Sign In</h1>
+                        <div class="logo"><img src="~/Content/content/logo2.jpg" alt="" /></div>
+                    </div><!--loginheader-->
+                @if (!string.IsNullOrWhiteSpace(msg))
+                {
+                    <div id="dvMsg" class="loginerror">
+                        <p id="pMsg">@msg</p>
+                    </div>
+                }
+                    
+                    <form id="login" action="@Url.Action("GirisYap","Kullanici")" method="post">
+                        <p>
+                            <label for="username" class="col4-fix">Kullanıcı Adı:</label>
+                            @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+                        </p>
+                        <p>
+                            <label for="password" class="col4-fix">Şifre:</label>
+                            @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+
+                        </p>
+                        <p>
+                            <button type="submit" class="form-control">Giriş Yap</button>
+                        </p>
+                        <p><a href="#" class="whitelink small">Şifrenimi Unuttun?</a></p>
+                    </form>
+                </div><!--loginform-->
+            </div>
+        </div><!--loginboxinner-->
+    </div><!--loginbox-->
+
+</body>
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+   
+
+    $(document).ready(function () {
+        
+        var msg = '@msg';
+
+        if (msg != null && msg != undefined && msg != "") {
+
+            $("#pMsg").val(msg);
+            $("#dvMsg").show();
+        }
+        else {
+            $("#pMsg").val("");
+            $("#dvMsg").hide();
+        }
+
+    });
+
+    
+
+</script>*@

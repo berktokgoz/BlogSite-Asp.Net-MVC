@@ -1,0 +1,41 @@
+﻿@model BerkTokgozBlogSitesi.Models.ViewModel.MakaleSil
+
+
+@{
+    ViewBag.Title = "MakaleSil";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var makaleler = ViewBag.Makaleler as List<SelectListItem>;
+}
+
+<h2>MakaleSil</h2>
+@using (Html.BeginForm("MakaleSil", "Yonetici", FormMethod.Post, new { @id="FormMakaleSil", enctype = "multipart/form-data" }))
+{
+    <div>
+        <table>
+
+            <tr>
+                <td>@Html.DropDownListFor(p => p.MakaleID, makaleler, new { @class = "form-control" })</td>
+                <td><input type="button" onclick="makaleSil()" value="Sil" /></td>
+            </tr>
+
+        </table>
+
+
+    </div>
+   
+   
+
+
+}
+
+<script>
+function makaleSil() {
+    var txt;
+    var r = confirm("Makaleyi silmek istediğinize eminmisiniz?");
+    if (r == true) {
+        $("#FormMakaleSil").submit();
+   
+    }
+    
+}
+</script>

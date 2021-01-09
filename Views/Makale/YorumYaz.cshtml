@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "YorumYaz";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@model BerkTokgozBlogSitesi.Models.ViewModel.Yorum
+<h4>Yorum Yaz</h4>
+
+@using (Html.BeginForm("Makale", "YorumYaz", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+
+
+{
+    <div>
+        <table>
+
+            <tr>
+                <td>Yorum içeriği:</td>
+                <td>
+                    <textarea class="form-control" name="Icerik" placeholder="Yorum içeriğini giriniz. Alanı büyütmek için sağ alt köşeden tutup çekiniz." cols="20" rows="10"></textarea>
+                    @Html.ValidationMessageFor(m => m.Icerik)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="form-control" type="submit" name="btnEkle" value="Kaydet" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
